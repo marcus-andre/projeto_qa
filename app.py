@@ -14,7 +14,7 @@ def form():
     if request.method == 'POST':
         for a, i in request.form.iteritems():
             values.update({a: i})
-        return jsonify(values.sort())
+        return jsonify(values)
 
     else:
         json_render = {
