@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+<form method="post" action="/">
+  <table>
+  Produto: <b>Coopera</b>
+  <br>
+  <br>
+  <tr>
+      <td>Hostname</td>
+      <td><input type="text" name="hostname" value="{{ hostname }}"></td>
+  </tr>
+  <tr>
+     <td>Roles</td>
+     <td><input type="text" name="roles" value="{{ roles }}"></td>
+  </tr>
+  <tr>
+      <td>Recipes</td>
+      <td><input type="text" name="recipes" value="{{ recipes }}"></td>
+  </tr>
+  <tr>
+      <td>Quantos Servidores</td>
+      <td><input type="text" name="n_srv" value="{{ n_srv }}"></td>
+  </tr>
+  <tr>
+      <td>Vlan</td>
+      <td><input type="text" name="vlan" value="{{ vlan }}"></td>
+  </tr>
+  <tr>
+      <td>Tipo</td>
+      <td><input type="text" name="tipo" value="{{ tipo }}"></td>
+  </tr>
+  </table>
+  <input type="submit" value="Enviar" />
+</form>
+</body>
+</html>
