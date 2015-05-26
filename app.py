@@ -2,24 +2,30 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import jsonify
-import operator
-import json
+
 
 app = Flask(__name__)
 
+
 @app.route("/", methods=['GET', 'POST'])
 def form():
+    values = {}
+    print request.form
     if request.method == 'POST':
-        return jsonify(dict((key, request.form.getlist(key) if len(request.form.getlist(key)) > 1 else request.form.getlist(key)[0]) for key in request.form.keys()))
+        for a, i in request.form.iteritems():
+            values.update({a: i})
+        return jsonify(values)
+
     else:
-        #print request.args.get('roles')
-        hostname = request.args.get('hostname', '')
-        roles    = request.args.get('roles', '')
-        recipes  = request.args.get('recipes', '')
-        n_srv    = request.args.get('n_srv', '')
-        vlan     = request.args.get('vlan', '')
-        tipo  = request.args.get('tipo', '')
-    return render_template('form.html', hostname=hostname, roles=roles, recipes=recipes, n_srv=n_srv, vlan=vlan, tipo=tipo)
+        json_render = {
+            'hostname': request.args.get('hostname', None),
+            'roles': request.args.get('roles', None),
+            'recipes': request.args.get('recipes', None),
+            'n_srv': request.args.get('n_srv', None),
+            'vlan': request.args.get('vlan', None),
+            'tipo': request.args.get('tipo', None)
+        }
+    return render_template('form.html', args=json_render)
 
 
 if __name__ == "__main__":
